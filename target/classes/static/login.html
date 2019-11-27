@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>login</title>
+    <script src="/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+    function login(){
+        $.post(
+            "/login/login",
+            {"username" : $("#username").val(), "password": $("#password").val()},
+            function (data) {
+                $("#username").val("3333");
+                alert(data);
+            },
+            "json"
+        )
+    }
+</script>
+<body>
+
+<div
+        style="width: 440px; border: 1px solid #E7E7E7; padding: 20px 0 20px 30px; border-radius: 5px; margin-top: 60px; background: #fff;">
+    <font>会员登录</font>&nbsp;&nbsp;&nbsp;&nbsp;USER LOGIN<br/><br/>
+    <form action="/login/register" method="post">
+        <div>
+            <div>
+                <label>请输入用户名：</label>
+                <input type="text" id="username" class="form-control" name="username" placeholder="请输入用户名" style="width:200px"/>
+            </div>
+            <div>
+                <label>请输入密码：</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" style="width:200px"/>
+            </div>
+            <div style="margin-top:10px">
+                <label>请输入验证码：</label><img src="./image/captcha.jhtml" />
+                <div style="margin-top:10px">
+                    <input type="text" class="form-control" name="checkcode" placeholder="请输入验证码" style="width:200px"/>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" />自动登录</label>
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" />记住密码</label>
+            </div>
+            <div>
+                <input type="button" value="登录" onclick="login()"/>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</body>
+</html>
